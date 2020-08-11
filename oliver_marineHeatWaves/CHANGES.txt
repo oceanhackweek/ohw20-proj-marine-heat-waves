@@ -1,0 +1,29 @@
+v0.1, 28 April 2015 -- Initial release (beta).
+v0.2, 29 April 2015 -- Fixed functionality of __init__.py
+v0.3, 29 April 2015 -- Changed from Python package (marineHeatWaves.marineHeatWaves) to individual python module (marineHeatWaves)
+v0.4, 27 May 2015   -- Added calculation of confidence limits to MHW trend calculation
+v0.5, 27 May 2015   -- Added absolute intensities to list of MHW metrics
+v0.6, 28 May 2015   -- Added support for time ranges which start/end partway through the year
+v0.7, 4 June 2015   -- Added support for missing values in temperature time series
+v0.8, 16 July 2015  -- Added calculations of total MHW days and cumulative intensity
+v0.9, 14 Sep 2015   -- Added calculation of MHW rank and return period
+v0.10, 14 Sep 2015  -- Added calculation of normalized MHW intensity
+v0.11, 26 Oct 2015  -- Updated documentation
+v0.12, 19 Nov 2015  -- Added support for 1st/last years in climatology
+v0.13, 21 Nov 2015  -- Added support for cold wave detection
+v0.14, 1 Dec 2015   -- Negative intensity for cold spells
+v0.15, 2 Dec 2015   -- Added calculation of temperature block mean, max, min
+v0.16, 16 Mar 2016  -- Markdown README, mhw_stats script, full paper reference
+v0.17, 17 Apr 2016  -- Added support for climatology to be calculated from alternate time series
+v0.18, 5 May 2016   -- Fixed error in calculation of 'rate_decline'
+v0.19, 17 May 2016  -- Fixed how leap years handled in climatology
+v0.20, 6 July 2016  -- Fixed handling of Infs in meanTrend function
+v0.21, 10 Jan 2017  -- Fixed calculation of Total MHW Days in mhwBlock function
+v0.22, 3 Feb 2017   -- Minor fix to meanTrend function handling of 'inf' values
+v0.23, 28 Feb 2017  -- Added blockAverage metric 'intensity_max_max'
+v0.24, 28 Mar 2017  -- Added MHW category metric
+v0.25, 12 Jul 2017  -- Fixed float64/integer error
+v0.26, 8 Dec 2017   -- Added calculation of total moderate, strong, severe and extree days to mhwBlock function
+v0.27, 19 Jan 2018  -- Minor bug fixed in category calculation
+v0.28, 2 May 2018   -- Changed default climatologyPeriod in detect function
+v0.29, 17 Feb 2020  -- Fixed handling of ice-season; Added length of year option (Ly)
