@@ -7,4 +7,7 @@ This projec objectives are to:
 Original Oliver's code:
 https://github.com/ecjoliver/marineHeatWaves 
 
+# Where are we now
 
+The Jupyter notebook:   Test Run Timeseries.ipynb
+integrate our efforts so far.
