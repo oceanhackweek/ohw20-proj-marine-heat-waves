@@ -11,4 +11,4 @@ https://github.com/ecjoliver/marineHeatWaves
 
 The Jupyter notebook:  Test Run Timeseries.ipynb
 
-integrate our efforts so far.
+integrates our efforts so far.
