@@ -1,0 +1,35 @@
+name: mhwenv
+channels:
+  - conda-forge
+dependencies:
+  - pangeo-notebook==2020.05.10
+  - beautifulsoup4
+  - bokeh
+  - bottleneck
+  - cartopy
+  - dask
+  - datashader
+  - distributed
+  - fsspec
+  - h5py
+  - h5netcdf
+  - holoviews
+  - hvplot
+  - intake
+  - intake-esm
+  - jupyter
+  - lxml
+  - matplotlib
+  - metpy
+  - netcdf4
+  - numpy
+  - pandas
+  - python
+  - satpy
+  - seaborn
+  - scikit-learn
+  - scipy
+  - s3fs
+  - xarray
+  - zarr
+
