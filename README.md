@@ -9,6 +9,9 @@ This project objectives are to:
 
 First steps are to update/rewrite the MHW code using xarray with testing to verify the code produces the same results as [the marineHeatWaves python package](https://github.com/ecjoliver/marineHeatWaves). This version of the python code does the analysis of a single point time series. Here we want to expand to the spatial data available from satellite sea surface temperature (SST) data products, and so changing from the data format in the previous code to one using xarray is the logical step. 
 
+#### Other MHW codes 
+In addition to the python [MHW code](https://github.com/ecjoliver/marineHeatWaves), an [R MHW code](https://cran.r-project.org/web/packages/RmarineHeatWaves/index.html) and [Matlab MHW toolbox](https://github.com/ZijieZhaoMMHW/m_mhw1.0) exist. 
+
 ### How to contribute? 
 
 Current [issues can be found or created here](https://github.com/oceanhackweek/ohw20-proj-marine-heat-waves/issues). 
