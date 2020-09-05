@@ -1,5 +1,6 @@
 import numpy as np
 import xarray as xr
+import pandas as pd
 
 
 # calculate the clim
@@ -25,3 +26,15 @@ def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercen
         thresh = thresh.pad(dayofyear=paddays, mode='wrap').rolling(dayofyear=smoothPercentileWidth,center=True).mean()[paddays:-paddays]
     ds = xr.Dataset({'seas':seas,'thresh':thresh})
     return ds
+
+def synthclim(startdate="1984-01-01",enddate="2014-12-31"):
+    dates =pd.date_range(start=startdate, end=enddate)
+    sst = 0.5*np.cos(dates.dayofyear.values*2*np.pi/365.25)
+    a = 0.85 # autoregressive parameter
+    for i in range(1,len(sst)):
+        sst[i] = a*sst[i-1] + 0.75*np.random.randn() +sst[i]
+    sst = sst - sst.min() + 5.
+    # Generate time vector using datetime format (January 1 of year 1 is day 1)
+    da =xr.DataArray(sst , dims={"time": dates},attrs={'units':'days since '+startdate},name='sst')
+    return da 
+    
