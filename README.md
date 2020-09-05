@@ -1,13 +1,13 @@
 # Marine Heat Wave (MHW) analysis with xarray (ohw20-proj-marine-heat-waves)
 
-This project aims to apply the MHW definition of Hobday et al. (2016) using the capabilities of [xarray](https://xarray.pydata.org/en/stable/) and dask. The project was started as an Ocean Hack Week 2020 project with the following objectives:
+This project aims to apply the MHW definition of Hobday et al. (2016) using the capabilities of [xarray](https://xarray.pydata.org/en/stable/) and [dask](https://dask.org/). The project was started as an Ocean Hack Week 2020 project with the following objectives:
 
 This project objectives are to:
 - update [E. Oliver's Marine Heat Waves (MHW) python code](https://github.com/ecjoliver/marineHeatWaves) to take advantage of xarray, datetime, and dask
 - adapt to use AWS MUR SST data
 - expand to regions (2D) analysis, as well as time series
 
-First steps are to update/rewrite the MHW code using xarray with testing to verify the code produces the same results as [this previous python package](https://github.com/ecjoliver/marineHeatWaves). 
+First steps are to update/rewrite the MHW code using xarray with testing to verify the code produces the same results as [the marineHeatWaves python package](https://github.com/ecjoliver/marineHeatWaves). This version of the python code does the analysis of a single point time series. Here we want to expand to the spatial data available from satellite sea surface temperature (SST) data products, and so changing from the data format in the previous code to one using xarray is the logical step. 
 
 ### How to contribute? 
 
