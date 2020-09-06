@@ -15,7 +15,7 @@ def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercen
         :param smoothPercentile: Smooth the output using running mean
         :param smoothPercentileWidth: Number of days for smoothing
         :param maxgap: Maximum gap to fill
-        :return: Xarray Dataset with seas (cilatology) and thresh (threshold)
+        :return: Xarray Dataset with seas (cilmatology) and thresh (threshold)
     """
     # put year and dayof year in the coordinates
     ts.coords['year']=ts.TIME.dt.year
@@ -25,7 +25,7 @@ def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercen
     seas =t1.reduce(np.nanmean,dim=('year','window_dim'))
     seas = seas[seas.dayofyear!=60].interp(dayofyear=range(1,367))
     thresh = t1.reduce(np.nanpercentile,dim=('year','window_dim'), q=percentile)
-    thresh = thresh[thresh.dayofyear!=60].interp(dayofyear=range(1,367)) #
+    thresh = thresh[thresh.dayofyear!=60].interp(dayofyear=range(1,367)) 
     if smoothPercentile:
         seas = seas.pad(dayofyear=smoothPercentileWidth, mode='wrap').rolling(dayofyear=smoothPercentileWidth,center=True).mean()[smoothPercentileWidth:-smoothPercentileWidth]
         thresh = thresh.pad(dayofyear=smoothPercentileWidth, mode='wrap').rolling(dayofyear=smoothPercentileWidth,center=True).mean()[smoothPercentileWidth:-smoothPercentileWidth]
