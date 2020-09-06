@@ -6,6 +6,17 @@ from datetime import date
 
 # calculate the clim
 def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercentileWidth=31,maxgap=2):
+    """ Calculate a climatology from a temperature time series.
+        time series must be a continous vector of single temperature value for each day
+        
+        :param xr.DataArray ts: temp array with coordinates TIME in datetime[64]
+        :param percentile: The percentile used for threshold calculation
+        :param windowHalfWidth: The size of the window used for caculations either side of the current value
+        :param smoothPercentile: Smooth the output using running mean
+        :param smoothPercentileWidth: Number of days for smoothing
+        :param maxgap: Maximum gap to fill
+        :return: Xarray Dataset with seas (cilatology) and thresh (threshold)
+    """
     # put year and dayof year in the coordinates
     ts.coords['year']=ts.TIME.dt.year
     ts.coords['dayofyear']=ts.TIME.dt.dayofyear
@@ -22,6 +33,11 @@ def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercen
     return ds
 
 def synthclim(startdate="1984-01-01",enddate="2014-12-31"):
+    """ generate a synthetic climatology.
+        
+        :param str startdate: start date of series eg. 1984-01-01
+        :param str enddate: end date of series eg. 2014-01-01
+    """
     dates =pd.date_range(start=startdate, end=enddate)
     sst = 0.5*np.cos(dates.dayofyear.values*2*np.pi/365.25)
     a = 0.85 # autoregressive parameter
