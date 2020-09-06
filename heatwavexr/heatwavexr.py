@@ -10,22 +10,11 @@ def ts2clm(ts,percentile=90,windowHalfWidth=5,smoothPercentile=True,smoothPercen
     ts.coords['year']=ts.TIME.dt.year
     ts.coords['dayofyear']=ts.TIME.dt.dayofyear
     ts.coords['dayofyear']=xr.where((ts.dayofyear>59) & (~ts.TIME.dt.is_leap_year),ts.dayofyear+1,ts.dayofyear)
-    #ts = ts[~((ts.dayofyear==60) & (ts.TIME.dt.is_leap_year))].dropna(dim='TIME')
-    #lets make Feb 29th on the non leap years 
-    #unstack the data into table year vs dayofyear
-    ts =ts.set_index(TIME=['dayofyear','year']).unstack()
-    ts =ts.interpolate_na(dim='dayofyear',max_gap=maxgap).pad(dayofyear=windowHalfWidth, mode='wrap')
-    
-    #pad ts with an extra month at each end and construct the dataset with halfwindow
-    t1 =ts.rolling(dayofyear=1+windowHalfWidth*2,min_periods=1,center=True).construct("window_dim") #.pad(dayofyear=paddays, mode='wrap')
-    #ts.rolling(dayofyear=1+windowHalfWidth*2,min_periods=1,center=True).construct("window_dim").reduce(np.nanmean,dim=('year','window_dim'))
-    #take the mean of each bin
-    seas =t1.reduce(np.nanmean,dim=('year','window_dim'))[windowHalfWidth:-windowHalfWidth].interp(dayofyear=range(1,367))
-    #interplate the Feb 29th
-    #seas = xr.where(seas.dayofyear==60,np.nan,seas).interpolate_na(dim='dayofyear',max_gap=maxgap)
-    thresh = t1.reduce(np.nanpercentile,dim=('year','window_dim'), q=percentile)[windowHalfWidth:-windowHalfWidth].interp(dayofyear=range(1,367)) #
-    #thresh = xr.where(thresh.dayofyear==60,np.nan,thresh)[paddays:-paddays].interpolate_na(dim='dayofyear',max_gap=maxgap)
-    
+    t1=ts.rolling(TIME=1+windowHalfWidth*2,min_periods=1,center=True).construct("window_dim").set_index(TIME=['dayofyear','year']).unstack()
+    seas =t1.reduce(np.nanmean,dim=('year','window_dim'))
+    seas = seas[seas.dayofyear!=60].interp(dayofyear=range(1,367))
+    thresh = t1.reduce(np.nanpercentile,dim=('year','window_dim'), q=percentile)
+    thresh = thresh[thresh.dayofyear!=60].interp(dayofyear=range(1,367)) #
     if smoothPercentile:
         seas = seas.pad(dayofyear=smoothPercentileWidth, mode='wrap').rolling(dayofyear=smoothPercentileWidth,center=True).mean()[smoothPercentileWidth:-smoothPercentileWidth]
         thresh = thresh.pad(dayofyear=smoothPercentileWidth, mode='wrap').rolling(dayofyear=smoothPercentileWidth,center=True).mean()[smoothPercentileWidth:-smoothPercentileWidth]
