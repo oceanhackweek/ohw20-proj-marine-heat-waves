@@ -37,6 +37,8 @@ To use AWS cloud 'Pangeo Binder AWS us-west-2'
 
 _MHW defintions to be here..._
 
+test equation: <img src="https://render.githubusercontent.com/render/math?math=T_m\left(j\right)=\sum_{y=y_s}^{y_e}\sum_{d=j-5}^{j+5}\frac{T\left(y,d\right)}{11\left(y_e-y_s+1\right)}">
+
 
 ### References
 
