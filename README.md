@@ -45,7 +45,7 @@ _T<sub>m</sub>_ (deg C) is the climatological mean, defined with the following e
 The threshold temperature, _T<sub>%</sub>_ (deg C), is determined by the percentile value desired (i.e. _T<sub>90</sub>_ is 90% threshold, _T<sub>95</sub>_ is a 95% threshold, etc.). The equation is given by <img src="https://render.githubusercontent.com/render/math?math=T_{90}\left(j\right)=P_{90}\left(X\right)"> where _P<sub>90</sub>_ is the 90% and <img src="https://render.githubusercontent.com/render/math?math=X=\left\{T\left(y,d\right)|y_s\leq{y}\leq{y_e},j-5\leq{d}\leq{j+5}\right\}">. Hobday et al. (2016) use the 90th percentile as the threshold to define an MHW.  
 
 *MHW Start and End* 
-The start time _t<sub>s</sub>_ (days) and end time _t<sub>e</sub>_ (days) of the MHW are defined when (_start_): T(t)>T<sub>90</sub>(j) and T(t-1)<T<sub>90</sub>(j) and (_end_): te>ts and T(t)<T<sub>90</sub>(j) and T(t-1)>T<sub>90</sub>(j)
+The start time _t<sub>s</sub>_ (days) and end time _t<sub>e</sub>_ (days) of the MHW are defined when (_start_): T(t)>T<sub>90</sub>(j) and T(t-1)<T<sub>90</sub>(j) and (_end_): t<sub>e</sub>>t<sub>s</sub> and T(t)<T<sub>90</sub>(j) and T(t-1)>T<sub>90</sub>(j)
 
 
 ### References
