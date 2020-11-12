@@ -1,5 +1,7 @@
 import heatwavexr as hw
 
-psst = hw.synthclim(enddate='1986-12-31')
+psst = hw.synthclim()
 test = hw.ts2clm(psst)
-sst = hw.detect(psst)
+sst,mhw = hw.detect(psst)
+result = hw.detectevent(psst,test.thresh,test.seas)
+print(result)
